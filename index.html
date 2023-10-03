@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Information Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #f9f9f9;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        label {
+            display: block;
+            font-weight: bold;
+        }
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Student Information Form</h2>
+        <form id="studentForm" action="#" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="nrp">NRP (10-digit):</label>
+                <input type="text" id="nrp" name="nrp" pattern="\d{10}" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email (Must be @something.com):</label>
+                <input type="email" id="email" name="email" pattern="[a-zA-Z0-9._%+-]+@something\.com" required>
+            </div>
+            <div class="form-group">
+                <label for="matkul">Mata Kuliah:</label>
+                <select id="matkul" name="matkul" required>
+                    <option value="dasar-pemrograman">Dasar Pemrograman</option>
+                    <option value="jaringan-komputer">Jaringan Komputer</option>
+                    <option value="organisasi-komputer">Organisasi Komputer</option>
+                    <option value="aljabar-linear">Aljabar Linear</option>
+                    <option value="teori-graf">Teori Graf</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="dosen">Dosen:</label>
+                <select id="dosen" name="dosen" required>
+                    <option value="Dr. Dwi Sunaryono, S.Kom., M.Kom.">Dr. Dwi Sunaryono, S.Kom., M.Kom.</option>
+                    <option value="Fajar Baskoro, S.Kom., MT.">Fajar Baskoro, S.Kom., MT.</option>
+                    <option value="Misbakhul Munir Irfan Subakti, S.Kom., M.Sc.">Misbakhul Munir Irfan Subakti, S.Kom., M.Sc.</option>
+                    <option value="Agus Budi Raharjo, S.Kom., M.Kom., Ph.D.">Agus Budi Raharjo, S.Kom., M.Kom., Ph.D.</option>
+                    <option value="Dr. Yudhi Purwananto, S.Kom., M.Kom.">Dr. Yudhi Purwananto, S.Kom., M.Kom.</option>
+                </select>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        const form = document.getElementById("studentForm");
+
+        form.addEventListener("submit", function(event) {
+            const name = document.getElementById("name").value;
+            const nrp = document.getElementById("nrp").value;
+            const email = document.getElementById("email").value;
+            const matkul = document.getElementById("matkul").value;
+            const dosen = document.getElementById("dosen").value;
+
+            if (nrp.length !== 10) {
+                alert("NRP must be 10 digits.");
+                event.preventDefault();
+            }
+
+            if (!email.endsWith("@something.com")) {
+                alert("Email must end with @something.com");
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>
